@@ -1,16 +1,24 @@
-require("dotenv").config();
+require("dotenv").config();  
 const { Sequelize } = require("sequelize");
 
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,
+  DB_USER, DB_PASSWORD, DB_HOST, 
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`, {
+try{
+  const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`, {
   logging: false, 
   native: false, 
+  sync: {
+    force: true,
+  },
 });
+}catch(error) {
+  console.error('Error al conectarse a la base de datos', error);
+  process.exit(1); 
+}
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -30,10 +38,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Driver } = sequelize.models;
 
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
-
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  ...sequelize.models,
+  conn: sequelize,     
 };
