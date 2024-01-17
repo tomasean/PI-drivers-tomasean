@@ -8,5 +8,30 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    apellido:{
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    imagen:{
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    descripcion:{
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    nacionalidad:{
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    fechadenacimiento:{
+      type: DataTypes.DATE,
+      allowNull:false
+    }
   });
 };
