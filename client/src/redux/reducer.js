@@ -1,9 +1,9 @@
-import { FILTER, GET_DRIVERS, TEAM_ORIGIN_ORDER_FILTER, SEARCH_BY_NAME } from "./action-types.js";
-import { handleError } from "./utils/error-handler";
+import { FILTER, GET_DRIVERS, TEAM_ORIGIN_ORDER_FILTER, SEARCH_BY_NAME, minecraft } from "./action-types.js";
 
 const initialState = {
     drivers: [],
     allDrivers: [],
+    name: "tomi",
     filter: {
         team: "",
         origin: "API",
@@ -19,11 +19,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 drivers: state.drivers.filter((driver) => driver.team === action.payload),
             };
-            case GET_DRIVERS_ERROR:
-                return {
-                    ...state,
-                    error: action.payload,
-                };
+            // case GET_DRIVERS:
+            //     return {
+            //         ...state,
+            //         error: action.payload,
+            //     };
 
                 case GET_DRIVERS:
                     return {
@@ -62,6 +62,11 @@ const rootReducer = (state = initialState, action) => {
                         ...state,
                         drivers: payload.data,
                     };
+                    case minecraft:
+                        return{
+                            ...state,
+                            name: action.payload,
+                        };
                     default:
                         return state;
     }

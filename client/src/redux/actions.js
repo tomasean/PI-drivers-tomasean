@@ -3,12 +3,11 @@ import {
     GET_DRIVERS,
     TEAM_ORIGIN_ORDER_FILTER,
     SEARCH_BY_NAME,
+    minecraft,
 } from "./action-types.js";
 import axios from "axios";
 
-import { handleError } from "./utils/error-handler";
-
-import { API_URL } from "./config/api-config";
+//import { API_URL } from "./config/api-config";
 
 export const filterCards = (team) => ({
     type: FILTER,
@@ -28,4 +27,11 @@ export const getDriversByName = async (name) => {
     } catch (err) {
         return handleError(err, SEARCH_BY_NAME);
     }
+};
+
+export const changeName = (name) => {
+    return {
+        type: minecraft,
+        payload: name,
+};
 };
