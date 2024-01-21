@@ -1,4 +1,4 @@
-import { FILTER, GET_DRIVERS, TEAM_ORIGIN_ORDER_FILTER, SEARCH_BY_NAME, minecraft } from "./action-types.js";
+import { FILTER, GET_DRIVERS, TEAM_ORIGIN_ORDER_FILTER, SEARCH_BY_NAME } from "./action-types.js";
 
 const initialState = {
     drivers: [],
@@ -62,11 +62,6 @@ const rootReducer = (state = initialState, action) => {
                         ...state,
                         drivers: payload.data,
                     };
-                    case minecraft:
-                        return{
-                            ...state,
-                            name: action.payload,
-                        };
                     default:
                         return state;
     }

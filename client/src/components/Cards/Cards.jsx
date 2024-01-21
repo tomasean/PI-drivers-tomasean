@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useSelector } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect, } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
 import style from "./Cards.module.css";
 import SelectionPage from "../SelectionPage/SelectionPage.jsx";
 import { getDrivers } from "../../redux/actions";
 
-const driversSelector = (state) =>
-  selectDrivers(state.drivers, state.filter);
-
 const Cards = () => {
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(0);
-  const drivers = useSelector(driversSelector);
+  const drivers = useSelector(state => state.drivers);
+  const filter = useSelector(state => state.filter);
+
   const isLoading = useSelector ((state) => state.drivers.isLoading);
   const error = useSelector ((state) => state.drivers.error);
 

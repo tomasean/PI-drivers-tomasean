@@ -1,36 +1,45 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const Detail = () => {
   const { id } = useParams();
+
+
+  const getDrivers = async (id) => {
+    try {
+      const { data } = await axios.get(`http://localhost:3001/drivers/${id}`);
+      return data;
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   const [driver, setDriver] = useState(null);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
-    const fetchDriver = async () => {
-      try {
-        const { data } = await axios.get(`http://localhost:3001/drivers/${id}`);
-        setDriver(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setIsLoading(false);
-      }
+    const fetchData = async () => {
+      const result = await getDrivers(id);
+      setDriver(result);
     };
-
-    fetchDriver();
+    fetchData();
   }, [id]);
 
   return (
-    <Suspense fallback={<div>Cargando...</div>}>
+    <div>
+      <div>{id}</div>
+      {driver && (<>
       <div>
-        {error && <div>Error al cargar los datos: {error.message}</div>}
-        {isLoading && <div>Cargando...</div>}
-        {driver && <DriverDetails driver={driver} />}
-      </div>
-    </Suspense>
+        <div>Name: {driver.name.forename}</div>
+        <div>Surname: {driver.name.surname}</div>
+        <div>Nationality: {driver.nationality}</div>
+        <div>Description: {driver.description}</div>
+        <div>Date: {driver.dob}</div>
+        <div>Team: {driver.teams}</div>
+        </div>
+        <img src={driver.image.url} />
+        </>
+        )}
+    </div>
   );
 };
 

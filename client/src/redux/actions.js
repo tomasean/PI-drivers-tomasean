@@ -8,22 +8,49 @@ import axios from "axios";
 
 //import { API_URL } from "./config/api-config";
 
-export const filterCards = (team) => ({
-    type: FILTER,
-    payload: team,
-});
+export const filterCards = (team) => {
+    return {
+        type: FILTER,
+        payload: team,
+    };
+};  
 
-export const filterDrivers = (filterData) => ({
-type: FILTER,
-payload: team,
-});
+export const filterDrivers = (filterData) => {
+    return {
+        type: TEAM_ORIGIN_ORDER_FILTER,
+        payload: filterData,
+    };
+};
+
+export const getDrivers = () => {
+    const endpoint = "http://localhost:3001/drivers";
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(endpoint);
+            return dispatch ({
+                type:GET_DRIVERS,
+                payload: data,
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+};
 
 export const getDriversByName = async (name) => {
-    const endpoint = `${API_URL}?name=${name}`;
-    try {
-        const response = await axios.get(endpoint);
-        return handleError(response, SEARCH_BY_NAME);
-    } catch (err) {
-        return handleError(err, SEARCH_BY_NAME);
-    }
+    const endpoint = "http://localhost:3001/drivers";
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(endpoint,{params:{name}});
+            return dispatch({
+                type: 'SEARCH_BY_NAME',
+                payload:data,
+            });
+        } catch (err) {
+            return dispatch({
+                type:'SEARCH_BY_NAME',
+                payload: err.response.data,
+            });
+        }
+    };
 };
