@@ -1,0 +1,63 @@
+.cardContainer {
+    border: 2px solid var(--dark-color);
+    flex: 0 30%;
+    height: 200px;
+    margin-bottom: 5%;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    border-radius: 25px;
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 17px;
+  }
+  
+  .left {
+    background: var(--primary-color);
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px 0  0 10px;
+  }
+  
+  .right {
+    margin: 40px;
+    width: 80%;
+  }
+  
+  .name{
+      height: 25%;
+      display: flex;
+      flex-direction: row;
+      color:var(--alternative-color);
+      border-bottom: 2px solid var(--dark-color);
+      text-align: center;
+      
+  }
+  .name>div{
+      width:100%;
+      align-self:center;
+      margin:10px;
+  }
+  .teams{
+      height:75%;
+      display: flex;
+      align-items: center;
+      border-radius: 0 0 0 25px;
+      color:var(--alternative-color);
+  }
+  .teams >div{
+      width:35%;
+      margin:10px;
+      
+  }
+  
+  .teams >span{
+      width:75%;
+      margin:10px;
+  }

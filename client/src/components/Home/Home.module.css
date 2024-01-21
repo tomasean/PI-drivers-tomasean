@@ -1,0 +1,11 @@
+.container{
+    background-color: var(--alternative-color);
+    /* padding: 10px; */
+    height: 95vh;
+}
+
+
+.filtersContainer{
+    display: flex;
+    justify-content: space-evenly;
+}

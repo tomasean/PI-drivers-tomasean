@@ -1,0 +1,30 @@
+.container{
+    color: grey;
+    background: url('') no-repeat center;
+    height: 1000px;
+    position: relative;
+
+}
+
+/* .button{
+    position:absolute;
+    top: 40%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+} */
+
+.button {
+    background-color: #000;
+    border: 3px solid #555;
+    top: 40%;
+    color: #fff;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 17px 50px;
+    border-radius: 30px;
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+  }
