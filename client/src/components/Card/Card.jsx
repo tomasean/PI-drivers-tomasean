@@ -1,13 +1,14 @@
-import style from './Card.module.css'
+import style from "./Card.module.css";
 
 const Card = ({ name, teams, image }) => {
   return (
     <div className={style.cardContainer}>
-      <div>{name}</div>
+      <div className={style.name}>{name}</div>
+      <div className={style.behind}>
       <img className={style.image} src={image} alt={`Image of ${name}`} />
-      <ul>
-        <li>{teams}</li>
-      </ul>
+
+      <div className={style.teams}>{teams}</div>
+      </div>
     </div>
   );
 };
