@@ -3,7 +3,6 @@ import {
     GET_DRIVERS,
     TEAM_ORIGIN_ORDER_FILTER,
     SEARCH_BY_NAME,
-    minecraft,
 } from "./action-types.js";
 import axios from "axios";
 
@@ -27,11 +26,4 @@ export const getDriversByName = async (name) => {
     } catch (err) {
         return handleError(err, SEARCH_BY_NAME);
     }
-};
-
-export const changeName = (name) => {
-    return {
-        type: minecraft,
-        payload: name,
-};
 };

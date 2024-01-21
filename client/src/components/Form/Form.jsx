@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import validation from "./validation";
 
 const Form = () => {
   const [driver, setDriver] = useState({
-    id:3,
+    id: 3,
     name: "PORTULACA",
     surname: "LACALMO",
     description: "SOyUnaDescripcion",
@@ -18,52 +18,36 @@ const Form = () => {
   const [allTeams, setAllTeams] = useState([]);
 
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleChange = (event) => {
-    setDriver({ ...driver, [event.target.name]: event.target.value });
-    setErrors(
-      validation({ ...driver, [event.target.name]: event.target.value })
-    );
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(driver);
+    setIsLoading(true);
+    setError(null);
 
-    axios
-      .post("http://localhost:3001/drivers", driver)
-      .then(({ data }) => {
-        window.alert(data);
-      })
-      .catch((err) => {
-        window.alert(err.response.data.error);
-      });
-  };
-
-  const handleTeamChange = (event) => {
-    if (!driver.teams.find((team) => team === event.target.value))
-      setDriver({ ...driver, teams: [...driver.teams, event.target.value] });
-    else {
-      window.alert("Esa escuderia ya fue cargada");
+    try {
+      const response = await axios.post("http://localhost:3001/drivers", driver);
+      window.alert(response.data);
+    } catch (err) {
+      setError(err.response.data.error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleTeamClick = (event) =>
-    setDriver({
-      ...driver,
-      teams: driver.teams.filter((team) => team !== event.target.innerHTML),
-    });
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/teams").then(({ data }) => {
-      setAllTeams(data);
-    });
-  }, []);
   return (
     <div>
+      {error && <div>Error: {error}</div>}
+      {isLoading && <div>Enviando...</div>}
+
       <form onSubmit={handleSubmit}>
         <label>Nombre</label>
-        <input name="name" value={driver.name} onChange={handleChange}></input>
+        <input
+          name="name"
+          value={driver.name}
+          onChange={handleChange}
+        ></input>
         <p style={{ color: "red" }}>{errors.name}</p>
         <label>Apellido</label>
         <input

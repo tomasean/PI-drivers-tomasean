@@ -5,4 +5,3 @@ export const NAME_SEARCH_DRIVERS = "NAME_SEARCH_DRIVERS";
 export const ORIGIN_FILTER = "ORIGIN_FILTER";
 export const ORDER_FILTER = "ORDER_FILTER";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
-export const minecraft = "minecraft";
