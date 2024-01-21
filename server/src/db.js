@@ -7,13 +7,11 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, 
 } = process.env;
 
+let sequelize 
 try{
-  const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`, {
+  sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`, {
   logging: false, 
   native: false, 
-  sync: {
-    force: true,
-  },
 });
 }catch(error) {
   console.error('Error al conectarse a la base de datos', error);
@@ -36,7 +34,10 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Driver } = sequelize.models;
+const { Driver, Team } = sequelize.models;
+
+Driver.belongsToMany(Team,{through:"TeamDriverTable"});
+Team.belongsToMany(Driver,{through:"TeamDriverTable"});
 
 module.exports = {
   ...sequelize.models,
