@@ -25,7 +25,7 @@ const Detail = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className={style.container}>
       <div>{id}</div>
       {driver && (<>
       <div>
