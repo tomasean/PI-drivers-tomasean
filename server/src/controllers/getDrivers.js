@@ -1,6 +1,6 @@
 const axios = require("axios");
 require("dotenv").config();
-const getDriversFromDB = require ("./helpers/getDriversFromDB");
+const { getDriversFromDB } = require ("./helpers/getDriversFromDB");
 const testDrivers = [
     {
       id: 1,
@@ -57,6 +57,7 @@ const testDrivers = [
           driver.driverRef.toLowerCase().includes(name.toLowerCase())
         );
         const driversFromDB = await getDriversFromDB(name);
+        console.log("hola");
         if (driversFromDB !== undefined) {
           dataToSend = dataToSend.concat(driversFromDB);
         }
@@ -64,7 +65,6 @@ const testDrivers = [
         if (dataToSend.length === 0) throw new Error("No driver found");
       } else dataToSend = data;
   
-      //checkeo que todos los drivers tengan foto sino cargo por default.
       for (let i = 0; i < dataToSend.length; i++) {
         if (!dataToSend[i].image.hasOwnProperty("url")) {
           dataToSend[i].image.url = process.env.DEFAULT_DRIVER_IMAGE;

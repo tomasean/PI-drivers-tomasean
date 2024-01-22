@@ -2,10 +2,12 @@
     background-color: var(--alternative-color);
     height: 95vh;
     background: url("../redbull.jpg");
+    color: white;
 }
 
 
 .filtersContainer{
     display: flex;
     justify-content: space-evenly;
+    color: white;
 }
