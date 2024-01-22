@@ -18,8 +18,8 @@ const Home = () => {
       <div className={style.filterGroup}>
         <span>Filtrar por escudería</span><Filter id="team" options={teams} />
         <span>Filtrar por origen</span><Filter id="origin" options={["Api", "Bd", "-"]} />
-        <span>Ordenar alfabeticamente</span><Filter id="order" options={["Asc", "Dsc", "-"]} />
-        <span>Ordenar por fecha de nacimiento</span><Filter id="dob" options={["Asc", "Dsc", "-"]} />
+        <span>Ordenar alfabeticamente</span><Filter id="order" options={["Asc", "Dsc", "Sin filtro"]} />
+        <span>Ordenar por fecha de nacimiento</span><Filter id="dob" options={["Asc", "Dsc", "Sin filtro"]} />
       </div>
       <Cards />
     </div>

@@ -1,6 +1,6 @@
 const axios = require("axios");
 require("dotenv").config();
-const { getDriversFromDB } = require ("./helpers/getDriversFromDB");
+const { getDriversFromDB, getAllDriversFromDB } = require ("./helpers/getDriversFromDB");
 const testDrivers = [
     {
       id: 1,
@@ -49,32 +49,48 @@ const testDrivers = [
   module.exports = async (req, res) => {
     let name = null;
     let dataToSend = {};
-    if (req.query) ({ name } = req.query); //extraigo el parametro name de la URL de la solicitud (si existe)
+    if (req.query) ({ name } = req.query);
     try {
-      const { data } = await axios.get("http://localhost:5000/drivers");
+      const { data } = await axios.get("http://localhost:5000/drivers"); //pido a la api los drivers
       if (name) {
+        //Si viene filtro por query
         dataToSend = data.filter((driver) =>
           driver.driverRef.toLowerCase().includes(name.toLowerCase())
         );
         const driversFromDB = await getDriversFromDB(name);
-        console.log("hola");
         if (driversFromDB !== undefined) {
+          for(let i=0;i<driversFromDB.length;i++){
+            driversFromDB[i].fromdatabase=true;
+          }
           dataToSend = dataToSend.concat(driversFromDB);
         }
         dataToSend = dataToSend.slice(0, 15);
         if (dataToSend.length === 0) throw new Error("No driver found");
-      } else dataToSend = data;
+      } else {
+        dataToSend = data; //Sino vienen datos por query cargo todos
+        const driversFromDB = await getAllDriversFromDB();
+        // console.log(driversFromDB);
+        if (driversFromDB !== undefined) {
+          for(let i=0;i<driversFromDB.length;i++){
+            driversFromDB[i].fromdatabase=true;
+          }
+          dataToSend = dataToSend.concat(driversFromDB);
+        }
   
+    }
+  
+      //checkeo que todos los drivers tengan foto sino cargo por default.
       for (let i = 0; i < dataToSend.length; i++) {
-        if (!dataToSend[i].image.hasOwnProperty("url")) {
+        if (!dataToSend[i].image.hasOwnProperty("url") || dataToSend[i].image.url.length<2) {
           dataToSend[i].image.url = process.env.DEFAULT_DRIVER_IMAGE;
         }
       }
-      return res.status(200).json(dataToSend); //respuesta exitosa con los datos de los pilotos encontrados
+      //devuelvo los drivers.
+      return res.status(200).json(dataToSend);
     } catch (error) {
       if(error.message==="No driver found")
-        return res.status(404).json({error: error.message}) //error por si no se encontro ningun piloto
+        return res.status(404).json({error: error.message})
   
-      return res.status(500).json({ error: error.message });//cualquier error
+      return res.status(500).json({ error: error.message });
     }
   };

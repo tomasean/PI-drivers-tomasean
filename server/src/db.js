@@ -38,7 +38,7 @@ const { Driver, Team } = sequelize.models;
 
 Driver.belongsToMany(Team,{through:"TeamDriverTable"});
 Team.belongsToMany(Driver,{through:"TeamDriverTable"});
-
+Driver.beforeCreate(driver => {return Driver.max("id").then(max => {driver.id=max?max+1:2000})})
 module.exports = {
   ...sequelize.models,
   conn: sequelize,     

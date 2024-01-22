@@ -5,7 +5,6 @@ import validation from "./validation";
 
 const Form = () => {
   const [driver, setDriver] = useState({
-    id:3,
     name: "PORTULACA",
     surname: "LACALMO",
     description: "SOyUnaDescripcion",

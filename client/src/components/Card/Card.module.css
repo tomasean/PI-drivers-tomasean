@@ -12,6 +12,7 @@
     border: 2px solid rgb(39,37,37);
     border-radius: 25px;
     margin: 5px;
+    text-decoration: none;
   }
   
   .name{

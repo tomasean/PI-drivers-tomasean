@@ -22,7 +22,6 @@ module.exports = async (req, res) => {
 
     for (let i = 0; i < focTeams.length; i++) {
       const [team, created] = await Team.findOrCreate(focTeams[i]);
-        console.log(team, created);
     }
 
     return res.status(200).json(uniqueTeams);

@@ -2,13 +2,12 @@ const { Driver, Team} = require('../db')
 
 module.exports = async (req, res) => {
     try{
-        const {id, name, surname, description, image, nationality, dob, teams} = req.body;
-        if(!id || !name || !surname || !description || !image || !dob || !nationality)
+        const { name, surname, description, image, nationality, dob, teams} = req.body;
+        if( !name || !surname || !description || !image || !dob || !nationality)
         return res.status(401).json({error:"Faltan datos"});
 
         const createdDriver = await Driver.create(
         {
-            id,
             name,
             apellido: surname,
             descripcion: description,
