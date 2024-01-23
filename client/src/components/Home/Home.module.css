@@ -1,23 +1,23 @@
 .container {
-    background-color: var(--alternative-color);
-    height: 95vh;
-    background: url("../redbull.jpg");
-    color: white;
-  }
-  
-  .filtersGroup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    flex-wrap: nowrap;
-    width: 100%;
-  }
-  
-  .filtersGroup > span {
-    margin: 20px 10px;
-  }
-  
-  .filtersGroup > div {
-    margin-right: 20px;
-  }
+  background-color: var(--alternative-color);
+  height: 95vh;
+  background: url("../redbull.jpg");
+  color: white;
+}
+
+.filtersGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.filtersGroup > span {
+  margin: 20px 10px;
+}
+
+.filtersGroup > div {
+  margin-right: 20px;
+}

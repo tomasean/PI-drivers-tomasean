@@ -1,4 +1,25 @@
-.container {
+/* .container{
+    color: grey;
+    background: url("../Formula1.jpg") no-repeat center;
+    height: 1000px;
+    position: relative;
+
+}
+.button {
+    background-color: #000;
+    border: 3px solid #555;
+    color: #fff;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 17px 50px;
+    border-radius: 30px;
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+  } */
+
+  .container {
     background: url("../Formula1.jpg") no-repeat center center fixed;
     background-size: cover;
     /* background-size: 100% 100%; */
@@ -10,7 +31,7 @@
     margin: 0;
   }
   
-  .button {
+  /* .button {
     background-color: #000;
     border: 3px solid #494949;
     color: #fff;
@@ -27,4 +48,23 @@
       background-color: white;
       color: black;
     }
+  } */
+
+  .button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  .button:hover {
+    border-color: #646cff;
+  }
+  .button:focus,
+  .button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
   }

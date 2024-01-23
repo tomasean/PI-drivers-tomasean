@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./Form.module.css"
 
 import validation from "./validation";
-
+import style from "./Form.module.css"
 const Form = () => {
   const [driver, setDriver] = useState({
     name: "PORTULACA",
@@ -18,13 +17,18 @@ const Form = () => {
   const [allTeams, setAllTeams] = useState([]);
 
   const [errors, setErrors] = useState({});
+  const [buttonClickable, setButtonClickable]=useState(true);
 
   const handleChange = (event) => {
     setDriver({ ...driver, [event.target.name]: event.target.value });
-    setErrors(
-      validation({ ...driver, [event.target.name]: event.target.value })
-    );
+    const erroresQueHay = validation({ ...driver, [event.target.name]: event.target.value })
+    setErrors(erroresQueHay);
+    if (Object.keys(erroresQueHay).length === 0){
+      setButtonClickable(false);
+    } else setButtonClickable(true);
   };
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,7 +64,7 @@ const Form = () => {
     });
   }, []);
   return (
-    <div className="container">
+    <div className={style.container}>
       <form onSubmit={handleSubmit}>
         <label>Nombre</label>
         <input name="name" value={driver.name} onChange={handleChange}></input>
@@ -125,7 +129,7 @@ const Form = () => {
           ))}
         </select>
 
-        <button className="button" type="submit">Submit</button>
+        <button className={buttonClickable ? style.buttonHidden : style.buttonNormal} disabled={buttonClickable} type="submit">Submit</button>
       </form>
     </div>
   );
