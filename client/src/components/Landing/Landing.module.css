@@ -1,17 +1,19 @@
 .container{
-    color: grey;
     background: url("../Formula1.jpg") no-repeat center;
     height: 1000px;
     position: relative;
-
 }
 .button {
     background-color: #000;
-    border: 3px solid #555;
+    border: 3px solid #494949;
     color: #fff;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
     padding: 17px 50px;
     border-radius: 30px;
+    cursor: pointer;
+    position:relative;
 
     &:hover {
         background-color: white;
