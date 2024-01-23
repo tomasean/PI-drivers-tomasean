@@ -51,9 +51,8 @@ const testDrivers = [
     let dataToSend = {};
     if (req.query) ({ name } = req.query);
     try {
-      const { data } = await axios.get("http://localhost:5000/drivers"); //pido a la api los drivers
+      const { data } = await axios.get("http://localhost:5000/drivers");
       if (name) {
-        //Si viene filtro por query
         dataToSend = data.filter((driver) =>
           driver.driverRef.toLowerCase().includes(name.toLowerCase())
         );
@@ -67,9 +66,8 @@ const testDrivers = [
         dataToSend = dataToSend.slice(0, 15);
         if (dataToSend.length === 0) throw new Error("No driver found");
       } else {
-        dataToSend = data; //Sino vienen datos por query cargo todos
+        dataToSend = data; 
         const driversFromDB = await getAllDriversFromDB();
-        // console.log(driversFromDB);
         if (driversFromDB !== undefined) {
           for(let i=0;i<driversFromDB.length;i++){
             driversFromDB[i].fromdatabase=true;
@@ -78,14 +76,11 @@ const testDrivers = [
         }
   
     }
-  
-      //checkeo que todos los drivers tengan foto sino cargo por default.
       for (let i = 0; i < dataToSend.length; i++) {
         if (!dataToSend[i].image.hasOwnProperty("url") || dataToSend[i].image.url.length<2) {
           dataToSend[i].image.url = process.env.DEFAULT_DRIVER_IMAGE;
         }
       }
-      //devuelvo los drivers.
       return res.status(200).json(dataToSend);
     } catch (error) {
       if(error.message==="No driver found")

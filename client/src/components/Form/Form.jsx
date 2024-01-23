@@ -5,12 +5,12 @@ import validation from "./validation";
 import style from "./Form.module.css"
 const Form = () => {
   const [driver, setDriver] = useState({
-    name: "PORTULACA",
-    surname: "LACALMO",
-    description: "SOyUnaDescripcion",
+    name: "test",
+    surname: "test",
+    description: "soy la descripcion",
     image: "defaultuirl",
-    nationality: "Basingseano",
-    dob: "1998-01-05",
+    nationality: "Minecraft",
+    dob: "1997-12-07",
     teams: [],
   });
 
