@@ -55,6 +55,8 @@ const Cards = () => {
     }
   }
 
+  if (pages.length < currentPage){setCurrentPage(0)};
+
   useEffect(() => {
     dispatch(getDrivers());
   }, []);

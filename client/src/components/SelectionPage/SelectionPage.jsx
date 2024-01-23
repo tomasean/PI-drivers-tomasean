@@ -17,41 +17,61 @@ const SelectionPage = ({
     }
   };
 
-  for (let i = currentPage; i < quantityPages; i++) {
-    if (i < currentPage + 20 && i < quantityPages - 1)
-      pagesNumbers.push(
-        <button
-          onClick={handleClick}
-          className={style.button}
-          key={`button_${i}`}
-        >
-          {i + 1}
-        </button>
-      );
-    if (i === quantityPages - 1) {
-      if (!(quantityPages - 2 < currentPage + 20))
-        pagesNumbers.push(
-          <span className={style.suspensivos} key={i - 1}>
-            ...
-          </span>
-        );
-      pagesNumbers.push(
-        <button onClick={handleClick} className={style.button} key={i}>
-          {i + 1}
-        </button>
-      );
-    }
+  for (let i=0; i < quantityPages; i++) {
+    pagesNumbers.push(
+      <button onClick={handleClick}
+      className={currentPage===i ? style.currentButton : style.button}
+      key={`button_${i}`}
+      >
+      {i + 1}  
+      </button>
+    );
   }
 
+  // for (let i = currentPage; i < quantityPages; i++) {
+  //   if (i < currentPage + 20 && i < quantityPages - 1)
+  //     pagesNumbers.push(
+  //       <button
+  //         onClick={handleClick}
+  //         className={style.button}
+  //         key={`button_${i}`}
+  //       >
+  //         {i + 1}
+  //       </button>
+  //     );
+  //   if (i === quantityPages - 1) {
+  //     if (!(quantityPages - 2 < currentPage + 20))
+  //       pagesNumbers.push(
+  //         <span className={style.suspensivos} key={i - 1}>
+  //           ...
+  //         </span>
+  //       );
+  //     pagesNumbers.push(
+  //       <button onClick={handleClick} className={style.button} key={i}>
+  //         {i + 1}
+  //       </button>
+  //     );
+  //   }
+  // }
+
   return (
-    <div>
-      {quantityPages > 0 ? (
+    // <div>
+    //   {quantityPages > 0 ? (
+    //     <>
+    //       <button onClick={handleClick}>Back</button>
+    //       {pagesNumbers.map((pagina) => pagina)}
+    //       <button onClick={handleClick}>Next</button>
+    //     </>
+    //   ) : null}
+    // </div>
+    <div className={style.SelectionPageContainer}>
+      {quantityPages > 0 ?(
         <>
-          <button onClick={handleClick}>Back</button>
-          {pagesNumbers.map((pagina) => pagina)}
-          <button onClick={handleClick}>Next</button>
+        <button className={style.endButtons} onClick={handleClick}>Back</button>
+        {pagesNumbers}
+        <button className={style.endButtons} onClick={handleClick}>Next</button>
         </>
-      ) : null}
+      ): null}
     </div>
   );
 };

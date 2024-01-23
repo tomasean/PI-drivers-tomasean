@@ -11,12 +11,17 @@ const Filter = ({ id, options }) => {
 
   return (
     <>
-      <select id={id} onChange={onChangeSelection} value={selectedValue != null ? selectedValue:'-'}>
-        {options && options.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
+      <select
+        id={id}
+        onChange={onChangeSelection}
+        value={selectedValue != null ? selectedValue : "-"}
+      >
+        {options &&
+          options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
       </select>
     </>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./Form.module.css"
 
 import validation from "./validation";
 
@@ -59,7 +60,7 @@ const Form = () => {
     });
   }, []);
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleSubmit}>
         <label>Nombre</label>
         <input name="name" value={driver.name} onChange={handleChange}></input>
@@ -124,7 +125,7 @@ const Form = () => {
           ))}
         </select>
 
-        <button type="submit">Submit</button>
+        <button className="button" type="submit">Submit</button>
       </form>
     </div>
   );

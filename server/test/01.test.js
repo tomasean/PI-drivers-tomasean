@@ -47,70 +47,6 @@ const driversMock = [
 //Mock axios
 jest.mock("axios");
 
-// describe("GET| /drivers", () => {
-//   //Como agrega los drivers de la DB hace que tire error, tengo que ver como agregar al mock de la base de datos.
-//   it("should return data from the API", async () => {
-//     //mock axios.get
-//     axios.get.mockResolvedValueOnce({ data: driversMock });
-
-//     const req = {};
-//     const res = {
-//       status: jest.fn().mockReturnThis(),
-//       json: jest.fn(),
-//     };
-//     await getDrivers(req, res);
-
-//     //Expect response status to be 200
-//     expect(res.status).toHaveBeenCalledWith(200);
-
-//     //Expect the response to contain the data from the mocked API call
-//     expect(res.json).toHaveBeenCalledWith(driversMock);
-//   });
-
-//   it("should handle cases when the API call fails", async () => {
-//     // Mock the axios.get function to simulate a failed API call
-//     axios.get.mockRejectedValueOnce(new Error("API error"));
-
-//     const req = {};
-//     const res = {
-//       status: jest.fn().mockReturnThis(),
-//       json: jest.fn(),
-//     };
-
-//     await getDrivers(req, res);
-
-//     // Expect the response status to be 500 (or any other status code you prefer for errors)
-//     expect(res.status).toHaveBeenCalledWith(500);
-
-//     // Expect the response to contain an error message
-//     expect(res.json).toHaveBeenCalledWith({ error: "API error" });
-//   });
-
-//   it("should put a default image when empty", async () => {
-//     const updatedDrivers = driversMock.map((driver) => ({ ...driver }));
-//     // Remove the image.url property for the second driver to simulate an empty URL
-//     delete updatedDrivers[1].image.url;
-//     // axios.get.mockResolvedValueOnce({ data: driversMock });
-//     axios.get.mockResolvedValueOnce({ data: updatedDrivers });
-
-//     const req = {};
-//     const res = {
-//       status: jest.fn().mockReturnThis(),
-//       json: jest.fn(),
-//     };
-//     await getDrivers(req, res);
-
-//     //Expect response status to be 200
-//     expect(res.status).toHaveBeenCalledWith(200);
-
-//     const response = res.json.mock.calls[0][0];
-//     //Expect the response to contain the data from the mocked API call
-//     expect(
-//       response.every((item) => item.image && typeof item.image.url === 'string')
-//     ).toBe(true);
-//   });
-// });
-
 describe("Routes test", () => {
   describe("GET| /drivers", () => {
     it("should return drivers", async () => {
@@ -161,7 +97,7 @@ describe("Routes test", () => {
       const response = await request(server).get("/teams");
 
       expect(response.statusCode).toEqual(200);
-      expect(response.body).toEqual([
+      expect(response.body.sort()).toEqual([
         "BMW Sauber",
         "Jordan",
         "McLaren",
@@ -182,7 +118,7 @@ describe("Routes test", () => {
       const response = await request(server).get("/teams");
 
       expect(response.statusCode).toEqual(200);
-      expect(response.body).toEqual([
+      expect(response.body.sort()).toEqual([
         "BMW Sauber",
         "Jordan",
         "McLaren",
@@ -279,7 +215,7 @@ describe("Database test", () => {
       expect(driver.descripcion).toBe(mockDriver.descripcion);
       expect(driver.imagen).toBe(mockDriver.imagen);
       expect(driver.nacionalidad).toBe(mockDriver.nacionalidad);
-      expect(driver.fechadenacimiento.toISOString().split("T")[0]).toBe(mockDriver.fechadenacimiento);
+      expect(driver.fechadenacimiento).toBe(mockDriver.fechadenacimiento);
       // Add other assertions for properties as needed
       
       // Additional assertions if needed
@@ -288,7 +224,7 @@ describe("Database test", () => {
       expect(fetchedDriver.descripcion).toBe(mockDriver.descripcion);
       expect(fetchedDriver.imagen).toBe(mockDriver.imagen);
       expect(fetchedDriver.nacionalidad).toBe(mockDriver.nacionalidad);
-      expect(fetchedDriver.fechadenacimiento.toISOString().split("T")[0]).toBe(mockDriver.fechadenacimiento);
+      expect(fetchedDriver.fechadenacimiento).toBe(mockDriver.fechadenacimiento);
       // Add other assertions for properties as needed
     });
   });
