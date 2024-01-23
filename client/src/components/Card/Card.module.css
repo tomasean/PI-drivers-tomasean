@@ -1,42 +1,3 @@
-<<<<<<< HEAD
-  .cardContainer {
-    display: flex;
-    flex-wrap: no-wrap;
-    flex-direction: column;
-    font-size: medium;
-    align-content: center;
-    flex: 0 30%;
-    height: 200px;
-    justify-content: center;
-    background-color: grey;
-    opacity: 0.9;
-    padding: 10px;
-    border: 2px solid rgb(39,37,37);
-    border-radius: 25px;
-    margin: 5px;
-    text-decoration: none;
-    &:hover {
-      background-color: white;
-      color: black;
-  }
-  }
-  
-  .name{
-    height: 10%;
-    font-size: large;
-    font-weight: 600;
-    font-family: 'Courier New', Courier, monospace;
-    color: black;
-  }
-  
-  .behind{
-    height: 90%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    
-  }
-=======
 .cardContainer {
   display: flex;
   flex-wrap: no-wrap;
@@ -58,7 +19,6 @@
     color: black;
 }
 }
->>>>>>> b479bc3bd90190e7ba6ad6ceda8f0a89ef76a5bf
 
 .name{
   height: 10%;
@@ -68,16 +28,6 @@
   color: black;
 }
 
-<<<<<<< HEAD
-  }
-  .teams{
-    width: 60%;
-    font-size: small;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 600;
-    color: black;
-  }
-=======
 .behind{
   height: 90%;
   display: flex;
@@ -103,4 +53,3 @@
   font-weight: 600;
   color: black;
 }
->>>>>>> b479bc3bd90190e7ba6ad6ceda8f0a89ef76a5bf

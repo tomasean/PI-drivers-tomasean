@@ -30,25 +30,6 @@
     align-items: center;
     margin: 0;
   }
-  
-  /* .button {
-    background-color: #000;
-    border: 3px solid #494949;
-    color: #fff;
-    font-weight: 700;
-    font-size: large;
-    font-family: 'Courier New', Courier, monospace;
-    border-radius: 30px;
-    cursor: pointer;
-    position: relative;
-    padding: 20px 50px;
-    text-decoration: none;
-  
-    &:hover {
-      background-color: white;
-      color: black;
-    }
-  } */
 
   .button {
     border-radius: 8px;
@@ -57,12 +38,12 @@
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
+    background-color: #505050;
     cursor: pointer;
     transition: border-color 0.25s;
   }
   .button:hover {
-    border-color: #646cff;
+    border-color: black;
   }
   .button:focus,
   .button:focus-visible {

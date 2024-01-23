@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <div className={style.container}>
-      <div className={style.filtersGroup}>
+      <div className={style.filterGroup}>
         <span>Filtrar por escudería</span><Filter id="team" options={teams} />
         <span>Filtrar por origen</span><Filter id="origin" options={["Api", "Bd", "-"]} />
         <span>Ordenar alfabeticamente</span><Filter id="order" options={["Asc", "Dsc", "Sin filtro"]} />

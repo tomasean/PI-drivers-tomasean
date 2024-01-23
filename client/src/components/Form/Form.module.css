@@ -1,18 +1,67 @@
-.container{
-  background-color: var(--alternative-color);
-  height: 95vh;
-  background: url("../redbull.jpg");
+.container {
+  background: url("../Formula1.jpg") no-repeat center;
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formBox {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.formTable {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  color: black;
+}
+
+.formBox label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formBox input,
+.formBox select {
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.formBox div {
+  margin-bottom: 10px;
+}
+
+.formBox button {
+  padding: 10px;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formBox button:hover {
+  background-color: grey;
+}
+
+.buttonHidden {
   color: white;
+  opacity: 1;
 }
 
-.buttonHidden{
-  color:grey;
-  opacity: 0.5;
-}
-.buttonHidden:hover{
-  
-}
-
-.buttonNormal{
-  color:blue
+.buttonNormal {
+  color: blue;
 }
