@@ -5,6 +5,17 @@ module.exports = async (req, res) => {
         const { name, surname, description, image, nationality, dob, teams} = req.body;
         if( !name || !surname || !description || !image || !dob || !nationality)
         return res.status(401).json({error:"Faltan datos"});
+    const searchDriver = await Driver.findAll(
+        {
+            where: {
+                name: name,
+                apellido: surname,
+                fechadenacimiento: dob
+            }
+        }
+    )
+
+    if (searchDriver.length !== 0) throw new Error ('Driver duplicado');
 
         const createdDriver = await Driver.create(
         {

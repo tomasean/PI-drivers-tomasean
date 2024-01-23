@@ -3,7 +3,7 @@ import style from "./Landing.module.css";
 
 const Landing = () => {
     return <div className={style.container}>
-      <NavLink to='/home'> <button className={style.button}>HOME</button> </NavLink>
+      <NavLink to='/home'> <button className={style.button}>H O M E</button> </NavLink>
       </div>;
   };
   

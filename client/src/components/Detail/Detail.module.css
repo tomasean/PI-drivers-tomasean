@@ -1,0 +1,81 @@
+.container {
+    height: 95vh;
+    width: 80lh; /* aca atento */
+    background: url("../pista.jpg") repeat center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+    width: 70%;
+    height: 70%;
+    border: 2px solid var(--dark-color);
+    border-radius: 20px;
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family:'Courier New', Courier, monospace;
+  }
+  
+  .id {
+    height: 1%;
+    width: 5%;
+    margin: 1%;
+    color: black;
+    font-weight: 700;
+  }
+  
+  .inside {
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--primary-color);
+    border-radius: 20px;
+  }
+  
+  .imgContainer {
+    width: 100%;
+    padding: 1%;
+    height: 40%;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .img {
+    border: 2px solid var(--dark-color);
+    height: 90%;
+    object-fit: cover;
+  }
+  
+  .data {
+    width: 90%;
+    height: 80%;
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+    background: black;
+    opacity: 0.9;
+    border-radius: 20px;
+    padding: 1%;
+  }
+  
+  .dataBox {
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 10px 10px 10px;
+  }
+  
+  .dataBox_first {
+    width: 20%;
+  }
+  
+  .dataBox_second {
+    width: 80%;
+  }

@@ -4,3 +4,15 @@
     background: url("../redbull.jpg");
     color: white;
 }
+
+.buttonHidden{
+    color:grey;
+    opacity: 0.5;
+}
+.buttonHidden:hover{
+    
+}
+
+.buttonNormal{
+    color:blue
+}

@@ -129,7 +129,7 @@ const Form = () => {
           ))}
         </select>
 
-        <button disabled={buttonClickable} type="submit">Submit</button>
+        <button className={buttonClickable ? style.buttonHidden : style.buttonNormal} disabled={buttonClickable} type="submit">Submit</button>
       </form>
     </div>
   );
